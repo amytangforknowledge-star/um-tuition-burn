@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080e1b">
+<link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="UM Tuition Burn — 学费燃烧计时器">
+<meta property="og:description" content="每秒烧掉多少学费？自定义学费、每周课程与上课时间，跳过校历假期，实时倒计时。">
+<meta name="twitter:card" content="summary">
+<meta name="description" content="UM Tuition Burn — 澳门大学 2026/27 学年趣味学费燃烧计时器。按真实课程时间和大学校历，计算正在消耗的学费。">
+<title>UM TUITION BURN — 学费燃烧计时器 · 2026/27</title>
+<link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="identity"><div class="monogram" aria-hidden="true">UM</div><div><strong>UNIVERSITY OF MACAU</strong><small>TUITION BURN · 2026 / 2027</small></div></div>
+  <div class="top-actions"><span class="capsule">非官方趣味项目</span><button class="btn ghost" id="demoBtn" title="进入/退出模拟课堂">▶ 课堂演示</button><button class="btn primary" id="shareBtn"><svg viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>分享</button></div>
+</header>
+<section class="introline">
+ <div><div class="eyebrow">THE COST OF AN EDUCATION · LIVE</div><h1 class="headline">今天这节课，<br><span>值多少钱？</span></h1><p class="lede">每一秒都在计价。按照你的课表、学费与澳大校历，看看上课究竟“烧掉”多少澳门元。</p></div>
+ <div class="timezone"><span class="liveBadge"><i id="liveDot" class="pulse pause"></i><span id="topStatus">等待上课</span></span><div>澳门时间 <b id="macauClock">--:--:--</b></div></div>
+</section>
+<section class="hero" aria-label="学费实时计数器">
+ <article class="hero-card"><div class="overline"><span id="countLabel">距离下一节课</span><span class="tagstate" id="countBadge">COUNTDOWN</span></div><time class="clock-digit" id="countdown">00:00:00</time><div class="clock-sub" id="countHint">正在寻找下一节课…</div><div class="timetrack"><div id="classProgress"></div></div><div class="cardfooter"><span>累计上课 <b id="elapsedClass">0 小时 00 分</b></span><span id="classFinish">单节 02:50:00</span></div></article>
+ <article class="hero-card burning is-paused" id="burnCard"><div class="overline"><span class="money-kicker">累计折算学费 · TOTAL BURNED</span><span class="tagstate" id="costBadge">PAUSED</span></div><div class="money-display"><span class="currency">MOP</span><span class="currency-number" id="costNumber" aria-live="off">0.00</span></div><div class="burn-hint"><span class="barflash" aria-hidden="true"><i></i><i></i><i></i></span><span id="burnText">非上课时段，金额暂停增长</span></div><div class="cardfooter warmfooter"><span>学年总学费 <b id="budgetLabel">MOP 87,000</b></span><span>未折算 <b id="leftLabel">MOP 87,000.00</b></span></div></article>
+</section>
+<div class="sim-ribbon" id="demoBanner">● 正在使用模拟课堂（10× 时间流速），显示金额不代表此刻实际消耗。再次点击「退出演示」返回澳门实时时间。</div>
+<section class="stats" aria-label="计算结果"><div class="stat"><span>每秒燃烧费率</span><b id="secondRate">MOP 0.000</b><small>按实际排定授课秒数</small></div><div class="stat"><span>每分钟学费</span><b id="minuteRate">MOP 0.00</b><small>上课时才会累计</small></div><div class="stat"><span>平均每节课</span><b id="lessonCost">MOP 0</b><small>170 分钟 / 节</small></div><div class="stat"><span>学年总课程</span><b id="lessonTotal">0 节</b><small id="lessonSpent">0 节已完成</small></div></section>
+<section class="progress"><div class="progress-top"><strong>第一学年 · 学费消耗进度</strong><span><b id="progressPct">0.0%</b> / 100%</span></div><div class="progress-track"><div id="totalProgress"></div></div><div class="progress-bottom"><span id="nextInfo">下一节课程：正在计算</span><span>上课期间累计 · 节假日不计时</span></div></section>
+<div class="setting-intro" id="customize"><div><h2>定制你的学费时钟</h2><p>先填学费，再填每周几节课。下方会自动生成可修改的周课表。</p></div><span class="sectionstep">YOUR INPUT</span></div>
+<section class="setup">
+ <div class="setup-grid">
+  <div><div class="fieldset-title"><span class="numbubble">01</span>学费设置</div><div class="field"><label for="annualFee">第一学年总学费 · 澳门元</label><div class="inputbox"><input id="annualFee" type="number" inputmode="decimal" min="0" max="10000000" step="100" value="87000"><span class="addon">MOP</span></div></div><p class="helptext">默认 MOP 87,000，适用澳大 2026/27 学年普通两年制非本地硕士。你可修改为自己的实际金额。</p><div class="sep"></div><p class="subcap">学费分摊方式（每学期按本学期实际总课时折算）</p><div class="field"><label for="autumnShare">第一学期分配比例</label><div class="inputbox"><input id="autumnShare" type="number" inputmode="decimal" min="0" max="100" step="1" value="50"><span class="addon">%</span></div></div><p class="helptext" id="feeSplitText">第一学期 MOP 43,500 · 第二学期 MOP 43,500。</p><div class="sep"></div><p class="helptext">按澳门时区 GMT+8 计时。课时单位固定为 <strong style="color:#d4e9ff">2 小时 50 分钟</strong>。假期和个人停课日不计入总授课时长。</p></div>
+  <div><div class="fieldset-title"><span class="numbubble">02</span>你的每周课表</div><div class="tabrow" role="tablist" aria-label="选择学期"><button type="button" class="selected" id="autumnTab" role="tab" aria-selected="true">第一学期 · 2026</button><button type="button" id="springTab" role="tab" aria-selected="false">第二学期 · 2027</button></div><div class="classeshead"><div class="field"><label for="weeklyCount">每周上几节课？</label><div class="inputbox"><input id="weeklyCount" type="number" inputmode="numeric" min="1" max="16" step="1" value="4"><span class="addon">节 / 周</span></div></div><button class="btn ghost" type="button" id="syncBtn">↪ 复制到另一学期</button></div><div class="rowlab"><span>#</span><span>课程名称（可选）</span><span>星期</span><span>开始时间</span><span>结束时间</span></div><div class="classrows" id="classRows"></div><p class="helptext" style="margin-top:13px">可在同一天安排多节不同时间的课程。请确保课程之间不重叠；期末考试和补课如需计价，应自行调整。</p></div>
+ </div>
+ <details class="details"><summary>更多设置 · 添加停课日 / 查看学校假期</summary><div class="details-inner"><p>已根据澳大 2026/27 学年暂定校历预置主要公众假期与学生休假。若有个人调课、停课或院系特定安排，可额外填写日期，每行一个，例如 <code>2026-11-16 临时停课</code>。补课不自动推断。</p><textarea id="extraDates" placeholder="2026-11-16 个人停课\n2027-03-12 课程取消"></textarea><div class="extra-info"><span>2026.09.26–09.28 中秋与补假</span><span>2026.10.01–10.02 国庆</span><span>2026.10.19 重阳补假</span><span>2026.11.02 追思节</span><span>2027.02.01–02.14 春节学生假期</span><span>2027.03.26–03.29 复活节假期</span><span>2027.04.05 清明节</span></div></div></details>
+ <div class="setupbar"><div class="left"><button type="button" class="btn ghost" id="resetBtn">恢复默认</button><span id="savedAt">配置会保存在当前浏览器内</span></div><div class="right"><button type="button" class="btn" id="calculateBtn">立即重新计算</button><button type="button" class="btn hot" id="applyBtn">✓ 保存并运行</button></div></div>
+</section>
+<section class="future-grid"><div class="info-card"><h3>THIS WEEK · 当前课程摘要</h3><div id="scheduleSummary" class="summary-list"></div></div><div class="info-card"><h3>CALCULATION · 这笔钱怎么算？</h3><div class="summary-list"><div class="item"><span>单节课长度</span><strong>170 分钟 / 10,200 秒</strong></div><div class="item"><span>第一学期有效课程</span><strong id="autumnCalc">—</strong></div><div class="item"><span>第二学期有效课程</span><strong id="springCalc">—</strong></div><div class="item"><span>计算逻辑</span><strong>学期学费 ÷ 本学期有效授课秒数</strong></div></div><div class="notice">学费“燃烧”是趣味等效计算，不代表学校按秒收费，亦不代表学费只用于课堂教学。此网站为非官方作品。</div></div></section>
+<footer class="footer"><span>UM TUITION BURN · 2026/27 · UNOFFICIAL STUDENT PROJECT</span><span>来源：<a href="https://reg.um.edu.mo/download/pub-doc/Almanac/University%20Almanac_AY2627.pdf" target="_blank" rel="noopener noreferrer">澳大学年校历（暂定版）</a> · <a href="https://grs.um.edu.mo/wp-content/uploads/Postgraduate-Tuition-Fees-26-27-EN.pdf" target="_blank" rel="noopener noreferrer">硕士学费标准</a></span></footer>
+</div><div role="status" id="toast" class="toast"></div>
+<script src="./assets/app.js" defer></script>
+</body>
+</html>
