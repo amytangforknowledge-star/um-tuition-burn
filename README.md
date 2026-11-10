@@ -1,98 +1,104 @@
-# UM Tuition Burn · 学费燃烧计时器
+<div align="center">
 
-一个免费的、开源的 **澳门大学 2026/27 学年学费倒计时网页**。根据实际授课时间，将学期学费折算为每秒课堂成本，展示实时「学费燃烧」金额与距离下课的倒计时。
+# 🔥 UM Tuition Burn
+### 澳门大学学费燃烧计时器 · University of Macau Tuition Countdown
 
-> **非官方学生趣味项目**：不隶属于澳门大学。学费按课堂时间折算仅是娱乐性估算，**不代表学校按秒计费**，亦不代表学费仅用于课堂教学。2026/27 校历为暂定版，遇校历变化需更新源代码。
+**今天这节课，究竟值多少钱？**  
+*How much does a minute in class cost — hypothetically?*
 
-![桌面截图](assets/preview.png)
+把学费按照排定的课堂时间折算成每秒金额；上课时，看着数字实时跳动。
 
-## 在线体验
+[**🌐 在线体验 / Live Demo**](https://is.gd/UMMoneyBurn26) · [**直接打开网站**](https://amytangforknowledge-star.github.io/um-tuition-burn/) · [**反馈 Issues**](https://github.com/amytangforknowledge-star/um-tuition-burn/issues)
 
-将此仓库公开并启用 GitHub Pages 后，网站会出现在：
+**开源免费 · 无需登录 · 手机电脑都能用**
 
-`https://<你的 GitHub 用户名>.github.io/<仓库名>/`
+</div>
 
-如果仓库名为 `um-tuition-burn`，且用户名为 `amytangforknowledge-star`，预期地址为：
+> [!IMPORTANT]
+> **非官方独立趣味项目。** 本站与澳门大学（University of Macau）无官方隶属、认证、授权或合作关系。所谓“学费燃烧”只是按课堂时间分摊学费的**数学模拟**，不代表学校按秒收费、真实教学成本、财务账单或退款依据。金额和课程安排因人而异，请谨慎填写、解读和传播。设计或功能如与其他作品相似，**如有雷同，纯属巧合**；但该声明不替代应有的知识产权授权。
 
-`https://amytangforknowledge-star.github.io/um-tuition-burn/`
+![UM Tuition Burn 网站桌面预览](assets/preview.png)
 
-**以上是预期地址，需要部署成功后才生效。**
+## ✨ 功能 · Features
 
-## 功能
+| 功能 | 说明 |
+| --- | --- |
+| ⏳ **下课倒计时** | 上课中显示距离下课的剩余时间；不在课堂时显示下一节课倒计时 |
+| 💸 **实时学费滚动** | 只在有效授课时段累计折算金额，下课自动暂停 |
+| 📚 **自定义课表** | 第一、第二学期分别配置每周课程数（1–16 节）、星期与开始时间 |
+| 💰 **自行输入学费** | 修改第一学年学费与两学期分配比例，默认金额仅为参考示例 |
+| 📅 **假期识别** | 按 2026/27 预置校历排除部分假期，并支持输入个人停课日 |
+| ⚡ **10 倍速演示** | 未上课也能模拟金额跳动，演示模式有明确标记 |
+| 🔗 **保存与分享** | 浏览器本地保存配置，支持生成带个人配置的分享链接 |
+| 📱 **手机与桌面端** | 响应式布局，使用澳门时区 Asia/Macau |
 
-- 上课期间实时累计等效学费，其他时段停止；支持 10× 课堂演示（明确标注模拟）
-- 距离下课或下一节课的动态倒计时
-- 默认单节 170 分钟（2 小时 50 分钟）
-- 自定义第一学年学费、第一学期比例、两个学期每周节数、星期与开始时间
-- 默认过滤 2026/27 校历列出的部分假期；可另行输入个人停课日
-- 课表保存在浏览器本地；可通过包含配置的 URL 片段分享
-- 按澳门时区 Asia/Macau 计时；响应式设计，支持手机
+**特别说明：** 当前澳大版本每节课固定 **170 分钟（2 小时 50 分钟）**，**尚不能单独修改某一节课的时长**；学期起止日期也固定为 2026/27，未自动更新至其他学年。它不是适合所有专业的统一课时模板。
 
-## 0 成本发布到 GitHub Pages
+## 🚀 如何使用 · Quick Start
 
-1. 登录 GitHub，创建一个新的仓库，建议名称为 **`um-tuition-burn`**。
-2. 选择 **Public**（公开）。GitHub Free 对公开仓库提供 Pages 托管。
-3. 打开仓库主页，使用 **Add file → Upload files**，将本仓库**解压后**的 `index.html`、`assets/`、`README.md`、`LICENSE`、`.nojekyll` 上传到仓库根目录（不是再包一层文件夹）。注意：浏览器上传有时不显示隐藏文件 `.nojekyll`，该文件对本项目不是强制的，可跳过。
-4. 点击 **Commit changes**。
-5. 进入 **Settings → Pages → Build and deployment**，将 **Source** 选为 `Deploy from a branch`，**Branch** 选 `main`，**Folder** 选 `/(root)`，点击 **Save**。
-6. 部署完成后进入 **Settings → Pages → Visit site** 查看公开网址。初次部署可能需等待数分钟。
+1. 打开 **[UM Tuition Burn → https://is.gd/UMMoneyBurn26](https://is.gd/UMMoneyBurn26)**。
+2. 输入你的**实际第一学年学费**，配置第一与第二学期的每周课数、星期和开课时间；必要时补充停课日期。
+3. 保存设置，返回首页查看**实时等效学费、每秒速率与课堂倒计时**；点击「课堂演示」可以提前预览效果。
 
-官方说明：[GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site) · [发布来源设置](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+**分享注意：** 只分享上方基础网址，其他人会自行设置；使用页面内的「分享」功能生成个人配置链接时，你填写的学费、课程名称、课表等会通过 URL 片段传给收件人。**不要在分享配置里填隐私信息。**
 
-### 更简单的方式：单文件发布
+## 🧮 计算口径 · Methodology
 
-如果你不想上传多个文件，也可以使用单文件版本 `UM_Tuition_Burn_2026-27_正式版.html`，在 GitHub 创建名为 `index.html` 的新文件，粘贴全部内容即可。**本仓库采用分离 HTML/CSS/JS 的结构，更适合开源协作和维护。**
+本项目使用“学费按有效课堂时间分摊”的娱乐性口径，而不是实际成本会计：
 
-## 本地运行
+- 每学期排定的有效课次数 × **170 × 60 秒** = 该学期有效授课秒数。
+- 分配到该学期的学费 ÷ 该学期有效授课秒数 = **该学期每秒等效金额**。
+- 两学期分别计算后，将已经发生的有效上课秒数对应金额累计；非上课时间不增长。
+- 预置的部分假期和用户添加的停课日从课程次数中排除；实际补课、实习、考试等需由使用者自行核对。
 
-直接打开 `index.html`，或者在本目录执行：
+由于两学期课程总量可能不同，**每秒费率不一定相同**。
+
+当前默认 **MOP 87,000/第一学年**，仅作为开发时参考的 **2026/27 普通两年制非本地硕士**情景，并非全校统一学费。请以个人实际费用通知与所属课程安排为准。本模型不实际核算图书馆、研究设施、GPU 或其他学校支出。
+
+## 🗓 校历与参考资料 · References
+
+- [澳门大学 2026/27 暂定校历 / University Almanac](https://reg.um.edu.mo/download/pub-doc/Almanac/University%20Almanac_AY2627.pdf)
+- [澳门大学 2026/27 研究生学费文件 / Postgraduate Tuition Fees](https://grs.um.edu.mo/wp-content/uploads/Postgraduate-Tuition-Fees-26-27-EN.pdf)
+
+**提醒：** 校历可能发生修订，不同学位、专业或课程可能有例外。本网站不会自动连接澳大教务系统更新排课与假期；请以学校最新公告为准。
+
+## 🔐 隐私与使用费用 · Privacy
+
+- **纯前端静态网页**：计时与金额计算在访问者自己的浏览器内完成，无付费 AI Token、GPU 计算或业务后端。
+- **无需账号**：设置保存在浏览器的 `localStorage` 中，清理网站数据可能导致设置丢失。
+- **无专用个人数据收集服务器**：项目本身未接入数据库、用户画像或广告跟踪；GitHub Pages 和短链接提供方仍可能按各自政策记录访问日志。
+- **没有实际扣款**：金额跳动不涉及付款、收取学费或银行交易。
+
+## 💻 本地运行与开源协作 · Development
+
+下载源码后打开 `index.html`，或在项目文件夹运行：
 
 ```bash
 python3 -m http.server 8000
 ```
 
-然后访问 http://localhost:8000 。无需 Node、npm、数据库、服务器或 API 密钥。
-
-## 文件结构
+然后在浏览器访问 `http://localhost:8000/`。无需 Node.js、数据库、API 密钥或安装依赖。
 
 ```text
 um-tuition-burn/
-├── index.html            # HTML 页面结构
+├── index.html           # 页面结构
 ├── assets/
-│   ├── app.js            # 计时与学费计算、课表和本地分享
-│   ├── style.css         # 桌面与手机布局样式
-│   ├── favicon.svg       # 网站图标
-│   └── preview.png       # 项目预览图
-├── .nojekyll             # 直接静态发布
-├── LICENSE               # MIT 开源许可证
-└── README.md             # 说明、部署方法
+│   ├── app.js           # 课程、校历和实时计算
+│   ├── style.css        # UI 与响应式样式
+│   ├── favicon.svg      # 网站图标
+│   └── preview.png      # 项目预览
+├── README.md
+└── LICENSE              # MIT
 ```
 
-## 计算逻辑
+欢迎通过 [GitHub Issues](https://github.com/amytangforknowledge-star/um-tuition-burn/issues) 反馈错误，或提交 Pull Request。建议重点改善**自定义课时、校历维护、补课与课程异动**；涉及学费与学校日期的修改，请附官方来源。
 
-每学期有效授课总时长：
+## ⚖️ License & Disclaimer
 
-`该学期每节课 10,200 秒 × 该学期排定的有效课程数`
+项目使用 **MIT License** 开源，可在遵守许可条款并保留相应声明的前提下使用、修改及再分发。不使用澳大官方徽标。**“如有雷同，纯属巧合”并不能免除著作权、商标等相关法律义务。**
 
-每秒等效学费：
+**本工具旨在娱乐、时间管理与计算可视化，不用于学费决策、收费争议或财务凭证。**
 
-`该学期分配的学费 ÷ 该学期有效授课总秒数`
+---
 
-只对已发生的有效授课秒数计价；实时累计为两个学期分别计算后的总和。课表日期、开始时间和假期名单由浏览器端 JavaScript 计算。
-
-计算结果取决于课表真实性、停课安排、实践活动及个人收费标准。它不是财务账单、学校学分收费规则或实际教学成本评估。
-
-## 数据隐私
-
-- **无后端、无账户、无埋点和广告代码**。课表数据保存在你自己的浏览器 `localStorage` 中。
-- 点击「分享」时，课表和学费会被序列化到网址 `#p=...` 中。**任何拿到分享链接的人都能看到这些参数**，不要在课程名称里填写私人敏感信息。
-- 不使用大学的官方标志。本项目名称提及 University of Macau 仅用于说明所参考的大学及学年。
-
-## 参考来源
-
-- [澳门大学 2026/27 暂定校历](https://reg.um.edu.mo/download/pub-doc/Almanac/University%20Almanac_AY2627.pdf)
-- [澳门大学 2026/27 研究生学费标准](https://grs.um.edu.mo/wp-content/uploads/Postgraduate-Tuition-Fees-26-27-EN.pdf)
-
-## 许可
-
-MIT License — 允许保留版权及许可声明的情况下自由使用、修改与再分发。欢迎通过 GitHub Issues / Pull Requests 提交更新。
+<div align="center"><sub>Made for curious students · 学费在跳，知识也要涨 📚</sub></div>
